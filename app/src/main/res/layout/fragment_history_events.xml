@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.lod_misis.ithappened.fragments.FragmentHistoryEvents">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <RelativeLayout
+            android:id="@+id/ll_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_filter_on_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Фильтр событий"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_for_filter"
+                android:padding="10dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_filter_on_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Фильтр по дате"
+                android:layout_toRightOf="@+id/tv_filter_on_event"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/rounded_for_filter"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"/>
+        </RelativeLayout>
+
+
+        <ListView
+            android:id="@+id/lv_historyEvent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_filter"
+            android:layout_marginTop="15dp">
+        </ListView>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

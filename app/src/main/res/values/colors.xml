@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#08AE9E</color>
+    // шапка
+    <color name="colorPrimaryDark">#079486</color>
+    //верхняя шапка
+    <color name="colorAccent">#08ae9e</color>
+    // кнопка
+    <color name="colorTitleLeft">#ffffff</color>
+    <color name="colorTitleRight">#ffffff</color>
+    <color name="background_MainFrameLayout">#f3f3f3</color>
+    <color name="colorDialogMain">#ffffff</color>
+    <color name="colorDialogBasement">#ffffff</color>
+    <color name="colorDialogAddLayout">#ffffff</color>
+    <color name="red">#ffffff</color>
+    <color name="other">#ffffff</color>
+
+
+    <color name="backgroundColorFragmentMain">#f3f3f3</color>
+    <color name="colorStatusBar">#08ae9e</color>
+
+
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+</resources>

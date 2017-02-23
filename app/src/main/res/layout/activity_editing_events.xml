@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.lod_misis.ithappened.EditingEvents">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_nameAndParameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+    <TextView
+        android:id="@+id/tv_label_name_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Название события"
+        android:textSize="20dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <EditText
+        android:id="@+id/et_eventName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_label_name_event"
+        android:layout_marginTop="3dp"
+        android:paddingTop="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_label_parameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_eventName"
+        android:text="Добавить параметр"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    <EditText
+        android:id="@+id/et_parameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_label_parameter"
+        android:layout_marginTop="3dp"
+        android:paddingTop="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:hint="Введите названия параметра"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_parameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_nameAndParameter"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_type_parameter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Тип параметра :"
+            android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/rg_parameter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_type_parameter"
+            android:paddingTop="5dp"
+            android:paddingLeft="15dp">
+
+            <RadioButton
+                android:id="@+id/rb_scale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Шкала оценки"
+                android:textColor="#797979"
+                android:textSize="20dp"/>
+
+            <RadioButton
+                android:id="@+id/rb_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Численное значение"
+                android:textColor="#797979"
+                android:textSize="20dp"/>
+
+            <RadioButton
+                android:id="@+id/rb_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Комментарий"
+                android:textColor="#797979"
+                android:textSize="20dp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_addParameter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rg_parameter"
+            android:text="Добавить"
+            android:textSize="20dp"
+            android:layout_marginTop="3dp"
+            android:padding="12dp"
+            android:background="@drawable/rounded_btn"/>
+
+        <ListView
+            android:id="@+id/lv_parameters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_addParameter"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:id="@+id/iv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ok"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

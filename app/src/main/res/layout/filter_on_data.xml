@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rl_filter_label_on_data"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#cccccc">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="#ffff"
+            android:gravity="center"
+            android:text="Фильтр по дате"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_filter_label_on_data">
+
+        <RadioGroup
+            android:id="@+id/rg_filter_on_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/rb_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="За последний день"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/rb_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="За последнию неделю"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/rb_mounth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="За последний месяц"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/rb_allTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="За все время"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/rb_yourPeriod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Свой период"
+                android:textSize="18dp" />
+
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_radioGroup">
+
+        <TextView
+            android:id="@+id/tv_label_ot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:text="От"
+            android:textSize="18dp" />
+
+        <DatePicker
+            android:id="@+id/dp_on"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:spinnersShown="true"
+            android:calendarViewShown="false"
+            android:layout_below="@+id/tv_label_ot"
+            android:layout_alignTop="@+id/tv_label_ot"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="3dp"
+            android:scaleX="1"
+            android:scaleY="0.5"
+            android:layout_alignBottom="@+id/tv_label_do" />
+
+        <TextView
+            android:id="@+id/tv_label_do"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_label_ot"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="70dp"
+            android:text="До"
+            android:textSize="18dp" />
+
+        <DatePicker
+            android:id="@+id/dp_from"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:spinnersShown="true"
+            android:calendarViewShown="false"
+            android:layout_below="@+id/tv_label_do"
+            android:layout_alignTop="@+id/tv_label_do"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="3dp"
+            android:scaleX="1"
+            android:scaleY="0.5"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_cancel_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_spinner">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/btn_ok"
+            android:padding="5dp"
+            android:text="ОТМЕНА"
+            android:textSize="20dp"
+            android:textColor="#08ae9e"/>
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:padding="5dp"
+            android:text="ОК"
+            android:textSize="20dp"
+            android:textColor="#08ae9e"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

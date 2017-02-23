@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorDialogMain"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#cccccc">
+
+                <TextView
+                    android:id="@+id/tv_nameEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="1dp"
+                    android:background="#ffff"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:text="Критический"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_numberParameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_title"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_numberParameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Уровень сахара в крови"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/et_numberParameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_numberParameter"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="2dp"
+                    android:hint="Введите численное значение"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_commentParameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_numberParameter"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_commentParameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Причина повышения сахара"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/et_commentParameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_commentParameter"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="3dp"
+                    android:hint="Введите комментарий"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLength="140"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tv_maxChar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/et_commentParameter"
+                    android:layout_marginRight="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_ratingParameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_commentParameter"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_ratingParameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Насколько было плохо"
+                    android:textSize="18dp" />
+
+                <RatingBar
+                    android:id="@+id/rb_ratingParameter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_ratingParameter"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="3dp"
+                    android:numStars="5" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_changeDataFix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_ratingParameter"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_changeDataFix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Изменить дату фиксации"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/sp_changeDataFix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_changeDataFix"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="3dp"></Spinner>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_btnPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_changeDataFix"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/tv_cancelV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/tv_okV2"
+                    android:text="ОТМЕНА"
+                    android:textColor="#08ae9e"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/tv_okV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:text="ОК"
+                    android:textColor="#08ae9e"
+                    android:textSize="25dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_dialog_customization_event_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorDialogMain">
+
+        <RelativeLayout
+            android:id="@+id/ll_addEventOnMainWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:background="@color/colorDialogAddLayout">
+
+            <TextView
+                android:id="@+id/tv_dialog_customization_event_add_event_on_mainWindow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Добавить событие \n на главный экран"
+                android:textSize="23dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"/>
+
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_dialog_customization_event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_addEventOnMainWindow"
+            android:layout_margin="10dp"
+            android:text="Название: "
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_dialog_customization_event_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_addEventOnMainWindow"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/tv_dialog_customization_event_name" />
+
+        <TextView
+            android:id="@+id/tv_dialog_customization_event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dialog_customization_event_name"
+            android:layout_margin="10dp"
+            android:text="Описание: "
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et_dialog_customization_event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dialog_customization_event_name"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/tv_dialog_customization_event_name"
+            android:layout_marginBottom="10dp"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/tl_basement"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/rl_dialog_customization_event_handler"
+        android:background="@color/colorDialogBasement"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dialog_customization_event_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorDialogAddLayout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dialog_customization_event_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Add"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

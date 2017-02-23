@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rl_filter_label"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#d6d6d6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="1dp"
+            android:text="Фильтр по событию"
+            android:textSize="25dp"
+            android:background="#ffffff"/>
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/lv_events"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_below="@+id/rl_filter_label"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_events"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/tv_ok"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:text="ОТМЕНА"
+            android:textColor="#08ae9e"/>
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:text="ОК"
+            android:textColor="#08ae9e"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

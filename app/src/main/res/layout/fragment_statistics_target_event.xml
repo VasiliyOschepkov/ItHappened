@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_btn_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_filter_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Фильтр событий"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/rounded_for_filter"
+            android:padding="10dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_type_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Тип отображения"
+            android:layout_toRightOf="@+id/tv_filter_on_event"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/rounded_for_filter"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_btn_panel"
+        android:paddingTop="15dp">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/char_statistics_event"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/char_statistics_event"/>
+    </RelativeLayout>
+
+</RelativeLayout>

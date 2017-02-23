@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#dadada"
+        android:orientation="horizontal"
+        android:layout_marginRight="1dp">
+
+        <TextView
+            android:id="@+id/tv_titleEvent"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="1dp"
+            android:textSize="25dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:background="@color/backgroundColorFragmentMain"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
