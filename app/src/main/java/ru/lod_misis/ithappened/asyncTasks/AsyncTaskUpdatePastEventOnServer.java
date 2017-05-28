@@ -31,7 +31,7 @@ public class AsyncTaskUpdatePastEventOnServer extends AsyncTask<PastEvent, Void,
             connection.setDoOutput(true);
             connection.setRequestProperty("content-type", "application/json");
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", Controller.token);
+//            connection.setRequestProperty("Authentication", Controller.token);
             connection.connect();
 
             OutputStream out = connection.getOutputStream();
@@ -39,16 +39,16 @@ public class AsyncTaskUpdatePastEventOnServer extends AsyncTask<PastEvent, Void,
 
             JSONObject object = new JSONObject();
             for (PastEvent pastEvent : params) {
-                int id = pastEvent.getIdServer();
+//                int id = pastEvent.getIdServer();
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("Comment", pastEvent.getComment());
                 jsonObject.accumulate("Mark", pastEvent.getMark());
                 jsonObject.accumulate("Number", pastEvent.getNumber());
                 jsonObject.accumulate("LastModified", pastEvent.getLastModified());
-                jsonObject.accumulate("IsDeleted", pastEvent.isDeleted());
+//                jsonObject.accumulate("IsDeleted", pastEvent.isDeleted());
 
-                object.accumulate(String.valueOf(id), jsonObject);
+//                object.accumulate(String.valueOf(id), jsonObject);
             }
             bufferedWriter.write(object.toString());
             bufferedWriter.flush();

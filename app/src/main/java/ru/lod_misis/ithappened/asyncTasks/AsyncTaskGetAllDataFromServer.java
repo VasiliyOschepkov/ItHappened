@@ -39,14 +39,14 @@ public class AsyncTaskGetAllDataFromServer extends AsyncTask<Void, Integer, List
     protected List<Event> doInBackground(Void... params) {
         List<Event> eventList = new ArrayList<>();
         try {
-            statistics = Controller.statistics;
+//            statistics = Controller.statistics;
 
             for (int i = statistics.getCurrentPage(); i <= statistics.getTotalPage(); i++) {
                 Log.d("Lod", "Получаем " + String.valueOf(i) + " стр");
                 url = new URL(urlStr + String.valueOf(i));
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
-                connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
+//                connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
                 connection.connect();
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -62,7 +62,7 @@ public class AsyncTaskGetAllDataFromServer extends AsyncTask<Void, Integer, List
                 getEvents(eventList, jsonObjectPage);
                 Log.d("Lod", "Получили " + i + " стр");
             }
-            Controller.statistics = null;
+//            Controller.statistics = null;
         } catch (MalformedURLException e) {
             Log.e("Lod", Log.getStackTraceString(e));
             e.printStackTrace();
@@ -110,12 +110,12 @@ public class AsyncTaskGetAllDataFromServer extends AsyncTask<Void, Integer, List
 
                     Date time = format.parse(timeHappened);
                     Date last = format.parse(lastModifiedPastEvent);
-                    listTime.add(new PastEvent(time, mark, number, comment, last, isDeletedPastEvent, idPastEvent));
+//                    listTime.add(new PastEvent(time, mark, number, comment, last, isDeletedPastEvent, idPastEvent));
                 }
 
                 Date lastEvent = format.parse(lastModified);
-                Event event = new Event(name, description, listTime, lastEvent, hasNumber, hasMark, hasComment, isDeletedEvent, idEvent);
-                events.add(event);
+//                Event event = new Event(name, description, listTime, lastEvent, hasNumber, hasMark, hasComment, isDeletedEvent, idEvent);
+//                events.add(event);
             }
 
         } catch (ParseException e) {

@@ -1,8 +1,7 @@
 package ru.lod_misis.ithappened.fragments;
 
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,18 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
+import io.realm.RealmChangeListener;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 import ru.lod_misis.ithappened.Controller;
 import ru.lod_misis.ithappened.DialogEvent;
-import ru.lod_misis.ithappened.EditingEvents;
 import ru.lod_misis.ithappened.R;
 import ru.lod_misis.ithappened.adapter.MainListEventAdapter;
 import ru.lod_misis.ithappened.model.Event;
+import ru.lod_misis.ithappened.model.Parameter;
 
 
 public class FragmentMain extends Fragment {
     private GridView gridView;
     private MainListEventAdapter mainListEventAdapter;
+    private RealmResults<Event> events = Controller.getEvents();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class FragmentMain extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Event event = Controller.getAllEvent().get(position);
+                Event event = events.get(position);
                 DialogEvent dialogEvent = new DialogEvent(getActivity());
                 dialogEvent.initDialogAddPastEvent(event);
                 dialogEvent.show();
@@ -49,24 +51,23 @@ public class FragmentMain extends Fragment {
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                Event event = Controller.getEventListFromDB().get(position);
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putString("nameEvent", event.getName());
-//
-//                FragmentEditingEvents fragmentEditingEvents = new FragmentEditingEvents();
-//                fragmentEditingEvents.setArguments(bundle);
-//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.fl_fragmentContainer, fragmentEditingEvents).commit();
-//
-//                MainActivity.fab.setVisibility(View.INVISIBLE);
+                Event event = events.get(position);
 
-                Event event = Controller.getAllEvent().get(position);
-                Intent intent = new Intent(getActivity(), EditingEvents.class);
-                intent.putExtra("Name",event.getName());
-                intent.putExtra("id", event.getId());
-                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putLong("eventID", event.getId());
+
+                FragmentEditingEvents fragmentEditingEvents = new FragmentEditingEvents();
+                fragmentEditingEvents.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fl_fragmentContainer, fragmentEditingEvents).commit();
                 return false;
+            }
+        });
+
+        events.addChangeListener(new RealmChangeListener<RealmResults<Event>>() {
+            @Override
+            public void onChange(RealmResults<Event> events) {
+                mainListEventAdapter.notifyDataSetChanged();
             }
         });
 
@@ -74,7 +75,7 @@ public class FragmentMain extends Fragment {
     }
 
     private void initAdapter() {
-        mainListEventAdapter = new MainListEventAdapter(getActivity(), R.layout.item_tile, Controller.find("isMain = ", new String[]{}, "", "", "" ));
+        mainListEventAdapter = new MainListEventAdapter(getActivity(), R.layout.item_tile, events);
         gridView.setAdapter(mainListEventAdapter);
     }
 }

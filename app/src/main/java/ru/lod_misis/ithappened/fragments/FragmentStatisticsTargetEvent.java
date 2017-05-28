@@ -40,7 +40,7 @@ public class FragmentStatisticsTargetEvent extends Fragment {
         Bundle bundle = getArguments();
         int idEvent = bundle.getInt("idEvent");
 
-        list = Controller.getStatisticsDataOnEvent(idEvent);
+//        list = Controller.getStatisticsDataOnEvent(idEvent);
 
         TextView filter = (TextView) view.findViewById(R.id.tv_filter_event);
         TextView typeShow = (TextView) view.findViewById(R.id.tv_type_show);

@@ -1,12 +1,8 @@
 package ru.lod_misis.ithappened.fragments;
 
 
-import android.app.AlertDialog;
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import io.realm.RealmResults;
 import ru.lod_misis.ithappened.Controller;
 import ru.lod_misis.ithappened.DialogEvent;
 import ru.lod_misis.ithappened.R;
 import ru.lod_misis.ithappened.adapter.MainListEventAdapter;
-import ru.lod_misis.ithappened.adapter.SpinnerAdapter;
 import ru.lod_misis.ithappened.model.Event;
 import ru.lod_misis.ithappened.model.PastEvent;
 
@@ -35,12 +29,11 @@ public class FragmentListEvents extends Fragment {
     private GridView gridView;
     private MainListEventAdapter mainListEventAdapter;
     private Event event;
-    private List<Event> events = Controller.getEventListFromDB();
+    private RealmResults<Event> events = Controller.getEvents();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("Lod", "onCreateView Fragment ListEvents");
-        Log.d("Lod", String.valueOf(events.size()));
 
         View view = inflater.inflate(R.layout.fragment_list_events, container, false);
 
@@ -57,7 +50,6 @@ public class FragmentListEvents extends Fragment {
         filterList.add("По алфавиту");
         filterList.add("Последние случившиеся");
         filterList.add("Самые популярные");
-        filterList.add("По имени");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, filterList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -91,7 +83,7 @@ public class FragmentListEvents extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                event = Controller.getEventListFromDB().get(position);
+                event = events.get(position);
                 DialogEvent dialogEvent = new DialogEvent(getActivity());
                 dialogEvent.initDialogAddPastEvent(event);
                 dialogEvent.show();
@@ -101,7 +93,7 @@ public class FragmentListEvents extends Fragment {
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                event = Controller.getEventListFromDB().get(position);
+                event = events.get(position);
                 DialogEvent dialogEvent = new DialogEvent(getActivity());
                 dialogEvent.initDialogCustomizationEvent(event);
                 dialogEvent.show();
@@ -146,19 +138,20 @@ public class FragmentListEvents extends Fragment {
 
                 PastEvent pastEvent1 = lhs.getListHappenedEvent().get(countPastList1);
                 PastEvent pastEvent2 = rhs.getListHappenedEvent().get(countPastList2);
-                return pastEvent1.getDateEventHappened().compareTo(pastEvent2.getLastModified());
+                return pastEvent1.getDateEvent().compareTo(pastEvent2.getLastModified());
             }
         });
         mainListEventAdapter.notifyDataSetChanged();
     }
 
     private void sortOnAlphabet() {
-        Collections.sort(events, new Comparator<Event>() {
-            @Override
-            public int compare(Event lhs, Event rhs) {
-                return lhs.getName().compareTo(rhs.getName());
-            }
-        });
+        events.sort("name");
+//        Collections.sort(events, new Comparator<Event>() {
+//            @Override
+//            public int compare(Event lhs, Event rhs) {
+//                return lhs.getName().compareTo(rhs.getName());
+//            }
+//        });
         mainListEventAdapter.notifyDataSetChanged();
     }
 

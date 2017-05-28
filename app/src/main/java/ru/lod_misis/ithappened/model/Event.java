@@ -1,27 +1,26 @@
 package ru.lod_misis.ithappened.model;
 
-
-import com.orm.SugarRecord;
-
 import java.util.Date;
-import java.util.List;
 
-public class Event extends SugarRecord {
-    private Long id;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Event extends RealmObject{
+    @PrimaryKey
+    private long id;
     private String name;
-    private List<PastEvent> listHappenedEvent;
+    private RealmList<PastEvent> listHappenedEvent;
     private Date lastModified;
-    private List<Parameter> parameters;
+    private RealmList<Parameter> parameters;
     private boolean isMain;
 
-    public Event() {}
+    public long getId() {
+        return id;
+    }
 
-    public Event(String name, List<PastEvent> listHappenedEvent, Date lastModified, List<Parameter> parameters, boolean isMain) {
-        this.name = name;
-        this.listHappenedEvent = listHappenedEvent;
-        this.lastModified = lastModified;
-        this.parameters = parameters;
-        this.isMain = isMain;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,11 +31,11 @@ public class Event extends SugarRecord {
         this.name = name;
     }
 
-    public List<PastEvent> getListHappenedEvent() {
+    public RealmList<PastEvent> getListHappenedEvent() {
         return listHappenedEvent;
     }
 
-    public void setListHappenedEvent(List<PastEvent> listHappenedEvent) {
+    public void setListHappenedEvent(RealmList<PastEvent> listHappenedEvent) {
         this.listHappenedEvent = listHappenedEvent;
     }
 
@@ -48,11 +47,11 @@ public class Event extends SugarRecord {
         this.lastModified = lastModified;
     }
 
-    public List<Parameter> getParameters() {
+    public RealmList<Parameter> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<Parameter> parameters) {
+    public void setParameters(RealmList<Parameter> parameters) {
         this.parameters = parameters;
     }
 
@@ -62,10 +61,5 @@ public class Event extends SugarRecord {
 
     public void setMain(boolean main) {
         isMain = main;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
     }
 }

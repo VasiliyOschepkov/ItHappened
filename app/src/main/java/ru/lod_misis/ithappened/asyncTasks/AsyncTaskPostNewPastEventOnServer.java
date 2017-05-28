@@ -39,7 +39,7 @@ public class AsyncTaskPostNewPastEventOnServer extends AsyncTask<PastEvent, Void
             connection.setDoOutput(true);
             connection.setRequestProperty("content-type", "application/json");
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", "gid-token" + Controller.token);
+//            connection.setRequestProperty("Authentication", "gid-token" + Controller.token);
             connection.connect();
 
             OutputStream out = connection.getOutputStream();
@@ -48,18 +48,18 @@ public class AsyncTaskPostNewPastEventOnServer extends AsyncTask<PastEvent, Void
             JSONObject object = new JSONObject();
             for (PastEvent pastEvent : params) {
                 // Берем из DB idServer Event
-                int id = Controller.getIdServerEventWhichIncludePastEvent(pastEvent.getId());
+//                int id = Controller.getIdServerEventWhichIncludePastEvent(pastEvent.getId());
 
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("TimeHappened", format.format(pastEvent.getDateEventHappened()));
+//                jsonObject.accumulate("TimeHappened", format.format(pastEvent.getDateEventHappened()));
                 jsonObject.accumulate("Mark", pastEvent.getMark());
                 jsonObject.accumulate("Number", pastEvent.getNumber());
 //                jsonObject.accumulate("NumberTitle", pastEvent.)
                 jsonObject.accumulate("Comment", pastEvent.getComment());
                 jsonObject.accumulate("LastModified", pastEvent.getLastModified());
-                jsonObject.accumulate("IsDeleted", pastEvent.isDeleted());
+//                jsonObject.accumulate("IsDeleted", pastEvent.isDeleted());
 
-                object.accumulate(String.valueOf(id), jsonObject);
+//                object.accumulate(String.valueOf(id), jsonObject);
             }
 
             bufferedWriter.write(object.toString());
@@ -95,7 +95,7 @@ public class AsyncTaskPostNewPastEventOnServer extends AsyncTask<PastEvent, Void
 
     private void updateDB(PastEvent[] pastEvents, List<Integer> listId) {
         for (int i = 0; i < listId.size(); i++) {
-            Controller.updateIdServerForPastEvent(pastEvents[i], listId.get(i));
+//            Controller.updateIdServerForPastEvent(pastEvents[i], listId.get(i));
         }
     }
 

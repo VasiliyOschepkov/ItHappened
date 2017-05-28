@@ -57,10 +57,10 @@ public class PageFragment extends Fragment {
             idEventList.add(entry.getKey());
         }
 
-        List<Event> eventList = Controller.getEventFromDBOnId(idEventList);
+//        List<Event> eventList = Controller.getEventFromDBOnId(idEventList);
 
-        initChar(view, percentList, eventList);
-        initListView(view, eventList, percentList);
+//        initChar(view, percentList, eventList);
+//        initListView(view, eventList, percentList);
 
         return view;
     }
@@ -73,7 +73,7 @@ public class PageFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("idEvent", eventList.get(position).getId());
+//                bundle.putInt("idEvent", eventList.get(position).getId());
 
                 FragmentStatisticsTargetEvent fragmentStatisticsTargetEvent = new FragmentStatisticsTargetEvent();
                 fragmentStatisticsTargetEvent.setArguments(bundle);

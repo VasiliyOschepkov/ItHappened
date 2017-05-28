@@ -21,11 +21,11 @@ public class FragmentStatisticsEvents extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistics_events, container, false);
 
-        List<StatisticsData> statisticsDatas = Controller.getStatisticsData();
+//        List<StatisticsData> statisticsDatas = Controller.getStatisticsData();
 
         ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
-        PagerAdapter pagerAdapter = new PageAdapter(getFragmentManager(), statisticsDatas);
-        pager.setAdapter(pagerAdapter);
+//        PagerAdapter pagerAdapter = new PageAdapter(getFragmentManager(), statisticsDatas);
+//        pager.setAdapter(pagerAdapter);
 
         return view;
     }

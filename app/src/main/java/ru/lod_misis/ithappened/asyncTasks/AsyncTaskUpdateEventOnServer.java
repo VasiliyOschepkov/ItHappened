@@ -30,7 +30,7 @@ public class AsyncTaskUpdateEventOnServer extends AsyncTask<Event, Void, Void> {
             connection.setDoOutput(true);
             connection.setRequestProperty("content-type", "application/json");
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", Controller.token);
+//            connection.setRequestProperty("Authentication", Controller.token);
             connection.connect();
 
             OutputStream out = connection.getOutputStream();
@@ -38,18 +38,18 @@ public class AsyncTaskUpdateEventOnServer extends AsyncTask<Event, Void, Void> {
 
             JSONObject object = new JSONObject();
             for (Event event : params) {
-                int id = event.getIdServer();
+//                int id = event.getIdServer();
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("Name", event.getName());
-                jsonObject.accumulate("Description", event.getDescription());
-                jsonObject.accumulate("HasMark", event.isMark());
-                jsonObject.accumulate("HasNumber", event.isNumber());
-                jsonObject.accumulate("HasComment", event.isComment());
-                jsonObject.accumulate("LastModified", event.getLastModified());
-                jsonObject.accumulate("IsDeleted", event.isDeleted());
+//                jsonObject.accumulate("Description", event.getDescription());
+//                jsonObject.accumulate("HasMark", event.isMark());
+//                jsonObject.accumulate("HasNumber", event.isNumber());
+//                jsonObject.accumulate("HasComment", event.isComment());
+//                jsonObject.accumulate("LastModified", event.getLastModified());
+//                jsonObject.accumulate("IsDeleted", event.isDeleted());
 
-                object.accumulate(String.valueOf(id), jsonObject);
+//                object.accumulate(String.valueOf(id), jsonObject);
             }
             bufferedWriter.write(object.toString());
             bufferedWriter.flush();

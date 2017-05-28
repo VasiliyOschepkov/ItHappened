@@ -1,11 +1,8 @@
 package ru.lod_misis.ithappened;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -13,18 +10,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import ru.lod_misis.ithappened.adapter.ParameterAdapter;
-import ru.lod_misis.ithappened.model.Event;
 import ru.lod_misis.ithappened.model.Parameter;
 
 public class EditingEvents extends AppCompatActivity {
-    boolean isNew = true;
     ArrayList<Parameter> list = new ArrayList<>();
 
     @Override
@@ -45,8 +38,6 @@ public class EditingEvents extends AppCompatActivity {
         final RadioButton number = (RadioButton) findViewById(R.id.rb_number);
         final RadioButton comment = (RadioButton) findViewById(R.id.rb_comment);
 
-//        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rl_image);
-
         TextView addParameter = (TextView) findViewById(R.id.tv_addParameter);
 
         ImageView delete = (ImageView) findViewById(R.id.iv_delete);
@@ -57,28 +48,19 @@ public class EditingEvents extends AppCompatActivity {
         listView.setAdapter(parameterAdapter);
 
         nameEvent.setText("");
-        final int[] id = new int[1];
-        id[0] = UUID.randomUUID().hashCode();
-
-        Intent intent = getIntent();
-        if (intent.getExtras() != null) {
-            isNew = false;
-            nameEvent.setText(intent.getExtras().getString("Name"));
-            id[0] = intent.getExtras().getInt("id");
-        }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_scale:
-                        typeParameter[0] = "Шкала оценки";
+                        typeParameter[0] = Parameter.TYPE_MARK;
                         break;
                     case R.id.rb_number:
-                        typeParameter[0] = "Численное значение";
+                        typeParameter[0] = Parameter.TYPE_NUMBER;
                         break;
                     case R.id.rb_comment:
-                        typeParameter[0] = "Комментарий";
+                        typeParameter[0] = Parameter.TYPE_COMMENT;
                         break;
                 }
             }
@@ -110,19 +92,8 @@ public class EditingEvents extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNew) {
-                    Controller.saveEvent(new Event(nameEvent.getText().toString(), "Test description"));
-                } else {
-                    for (Parameter parameter : list) {
-                        if (parameter.getTypeParameter().equals("Численное значение")) {
-                            Controller.setNumberParameterEvent(parameter, id[0]);
-                        } else if (parameter.getTypeParameter().equals("Шкала оценки")) {
-                            Controller.setRatingParameterEvent(parameter, id[0]);
-                        } else if (parameter.getTypeParameter().equals("Комментарий")) {
-                            Controller.setCommentParameterEvent(parameter, id[0]);
-                        }
-                    }
-                }
+                String name = nameEvent.getText().toString();
+                Controller.saveEvent(name, list);
                 finish();
             }
         });
@@ -147,15 +118,15 @@ public class EditingEvents extends AppCompatActivity {
                 parameterAdapter.notifyDataSetChanged();
 
                     switch (parameter.getTypeParameter()) {
-                        case "Численное значение":
+                        case Parameter.TYPE_NUMBER:
                             number.setVisibility(View.VISIBLE);
                             number.setChecked(false);
                             break;
-                        case "Шкала оценки":
+                        case Parameter.TYPE_MARK:
                             scale.setVisibility(View.VISIBLE);
                             number.setChecked(false);
                             break;
-                        case "Комментарий":
+                        case Parameter.TYPE_COMMENT:
                             comment.setVisibility(View.VISIBLE);
                             number.setChecked(false);
                             break;

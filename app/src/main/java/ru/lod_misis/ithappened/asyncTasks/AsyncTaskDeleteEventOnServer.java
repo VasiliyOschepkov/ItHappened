@@ -30,13 +30,13 @@ public class AsyncTaskDeleteEventOnServer extends AsyncTask<Event, Void, Void> {
         try {
             JSONArray array = new JSONArray();
             for (Event event : params) {
-                array.put(event.getIdServer());
+//                array.put(event.getIdServer());
             }
 
             url = new URL(urlStr);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
+//            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
             connection.setRequestProperty("content-type", "application/json");
             connection.setDoOutput(true);
             connection.connect();

@@ -28,13 +28,13 @@ public class AsyncTaskDeletePastEventOnServer extends AsyncTask<PastEvent, Void,
         try {
             JSONArray array = new JSONArray();
             for (PastEvent pastEvent : params) {
-                array.put(pastEvent.getIdServer());
+//                array.put(pastEvent.getIdServer());
             }
 
             url = new URL(urlStr);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
+//            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
             connection.setRequestProperty("content-type", "application/json");
             connection.setDoOutput(true);
             connection.connect();

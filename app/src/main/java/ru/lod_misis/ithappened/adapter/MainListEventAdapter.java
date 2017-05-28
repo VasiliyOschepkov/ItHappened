@@ -9,18 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.List;
-
+import io.realm.RealmResults;
 import ru.lod_misis.ithappened.R;
 import ru.lod_misis.ithappened.model.Event;
 
 public class MainListEventAdapter extends ArrayAdapter<Event> {
     private Activity context;
     private  int resource;
-    private List<Event> events;
+    private RealmResults<Event> events;
 
-    public MainListEventAdapter(Context context, int resource, List<Event> events) {
+    public MainListEventAdapter(Context context, int resource, RealmResults<Event> events) {
         super(context, resource, events);
         this.context = (Activity) context;
         this.resource = resource;
@@ -34,7 +32,6 @@ public class MainListEventAdapter extends ArrayAdapter<Event> {
 
         TextView titleEvent = (TextView) convertView.findViewById(R.id.tv_titleEvent);
         titleEvent.setText(events.get(position).getName());
-
 
         if (position == events.size() - 1) {
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) titleEvent.getLayoutParams();

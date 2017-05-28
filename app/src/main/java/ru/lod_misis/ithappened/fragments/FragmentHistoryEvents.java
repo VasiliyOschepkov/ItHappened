@@ -32,7 +32,7 @@ public class FragmentHistoryEvents extends Fragment {
         listView = (ListView) view.findViewById(R.id.lv_historyEvent);
         filter_on_event = (TextView) view.findViewById(R.id.tv_filter_on_event);
         filter_on_date = (TextView) view.findViewById(R.id.tv_filter_on_data);
-        listForAdapter = Controller.getPastEventListFromDB();
+//        listForAdapter = Controller.getPastEventListFromDB();
 
         filter_on_event.setOnClickListener(new View.OnClickListener() {
             @Override

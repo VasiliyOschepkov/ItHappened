@@ -35,7 +35,17 @@ public class ParameterAdapter extends ArrayAdapter<Parameter> {
         nameParameter.setText(parameters.get(position).getNameParameter());
 
         TextView typeParameter = (TextView) convertView.findViewById(R.id.tv_typeParameter);
-        typeParameter.setText("Тип: " + parameters.get(position).getTypeParameter());
+        switch (parameters.get(position).getTypeParameter()) {
+            case Parameter.TYPE_NUMBER:
+                typeParameter.setText("Тип: Численное значение");
+                break;
+            case Parameter.TYPE_MARK:
+                typeParameter.setText("Тип: Шкала оценки");
+                break;
+            case Parameter.TYPE_COMMENT:
+                typeParameter.setText("Тип: Комментарий");
+                break;
+        }
 
         return convertView;
     }

@@ -1,30 +1,26 @@
 package ru.lod_misis.ithappened.model;
 
-
-import com.orm.SugarRecord;
-
 import java.util.Date;
 
-public class PastEvent extends SugarRecord {
-    private Long id;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class PastEvent extends RealmObject{
+    @PrimaryKey
+    private long id;
     private Date dateEvent;
     private  Date lastModified;
     private int mark;
     private int number;
     private String comment;
     private boolean isDelete;
-    private int idServer;
 
-    public PastEvent() {}
+    public long getId() {
+        return id;
+    }
 
-    public PastEvent(Date dateEvent, Date lastModified, int mark, int number, String comment, boolean isDelete, int idServer) {
-        this.dateEvent = dateEvent;
-        this.lastModified = lastModified;
-        this.mark = mark;
-        this.number = number;
-        this.comment = comment;
-        this.isDelete = isDelete;
-        this.idServer = idServer;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getDateEvent() {
@@ -73,13 +69,5 @@ public class PastEvent extends SugarRecord {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
-    }
-
-    public int getIdServer() {
-        return idServer;
-    }
-
-    public void setIdServer(int idServer) {
-        this.idServer = idServer;
     }
 }

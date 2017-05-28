@@ -48,11 +48,11 @@ public class HistoryEventAdapter extends BaseSwipeAdapter {
         TextView more = (TextView) convertView.findViewById(R.id.tv_other);
         TextView delete = (TextView) convertView.findViewById(R.id.tv_delete);
 
-        Event event = Controller.getEventOnDateFromDB(listPastEvents.get(position));
-        if (event != null) {
-            name.setText(event.getName());
-            date.setText(format.format(listPastEvents.get(position).getDateEventHappened()));
-        }
+//        Event event = Controller.getEventOnDateFromDB(listPastEvents.get(position));
+//        if (event != null) {
+//            name.setText(event.getName());
+//            date.setText(format.format(listPastEvents.get(position).getDateEventHappened()));
+//        }
 
         more.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -185,7 +185,7 @@ public class GoogleSignInActivity extends BaseActivity implements
                     }
                 });
 
-        Controller.token = acct.getIdToken();
+//        Controller.token = acct.getIdToken();
         String personName = acct.getDisplayName();
         String personEmail = acct.getEmail();
         Uri personPhoto = acct.getPhotoUrl();

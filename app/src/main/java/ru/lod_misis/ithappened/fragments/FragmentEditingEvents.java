@@ -18,8 +18,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ru.lod_misis.ithappened.Controller;
 import ru.lod_misis.ithappened.R;
 import ru.lod_misis.ithappened.adapter.ParameterAdapter;
+import ru.lod_misis.ithappened.model.Event;
 import ru.lod_misis.ithappened.model.Parameter;
 
 public class FragmentEditingEvents extends Fragment {
@@ -32,6 +34,9 @@ public class FragmentEditingEvents extends Fragment {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getActivity().setTitle("Редактирование события");
+
+        Event event = Controller.getEvent(getArguments().getLong("eventID"));
+        list.addAll(event.getParameters());
 
         final String[] typeParameter = new String[1];
 
@@ -53,21 +58,20 @@ public class FragmentEditingEvents extends Fragment {
         ParameterAdapter parameterAdapter = new ParameterAdapter(getActivity(), R.layout.item_parameter, list);
         listView.setAdapter(parameterAdapter);
 
-        Bundle bundle = getArguments();
-        nameEvent.setText(bundle.getString("nameEvent"));
+        nameEvent.setText(event.getName());
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_scale:
-                        typeParameter[0] = "Шкала оценки";
+                        typeParameter[0] = Parameter.TYPE_MARK;
                         break;
                     case R.id.rb_number:
-                        typeParameter[0] = "Численное значение";
+                        typeParameter[0] = Parameter.TYPE_NUMBER;
                         break;
                     case R.id.rb_comment:
-                        typeParameter[0] = "Комментарий";
+                        typeParameter[0] = Parameter.TYPE_COMMENT;
                         break;
                 }
             }
@@ -76,21 +80,20 @@ public class FragmentEditingEvents extends Fragment {
         addParameter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if ((scale.isChecked() || number.isChecked() || comment.isChecked()) && nameParameter.getText().toString().isEmpty()) {
-                Parameter parameter = new Parameter(nameParameter.getText().toString(), typeParameter[0]);
-                list.add(parameter);
+                if ((scale.isChecked() || number.isChecked() || comment.isChecked()) && nameParameter.getText().toString().isEmpty()) {
+                    Parameter parameter = new Parameter(nameParameter.getText().toString(), typeParameter[0]);
+                    list.add(parameter);
 
-                if(scale.isChecked()) {
-                    scale.setVisibility(View.GONE);
-                }else if (number.isChecked()) {
-                    number.setVisibility(View.GONE);
-                }else {
-                    comment.setVisibility(View.GONE);
+                    if (scale.isChecked()) {
+                        scale.setVisibility(View.GONE);
+                    } else if (number.isChecked()) {
+                        number.setVisibility(View.GONE);
+                    } else {
+                        comment.setVisibility(View.GONE);
+                    }
                 }
-//                }
             }
         });
-
 
 
         ok.setOnClickListener(new View.OnClickListener() {

@@ -31,7 +31,7 @@ public class AsyncTaskGetStatistics extends AsyncTask<Void, Void, Statistics> {
             url = new URL(urlStr);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
+//            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
             connection.connect();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -70,7 +70,7 @@ public class AsyncTaskGetStatistics extends AsyncTask<Void, Void, Statistics> {
     @Override
     protected void onPostExecute(Statistics statistics) {
         super.onPostExecute(statistics);
-        Controller.statistics = statistics;
+//        Controller.statistics = statistics;
         new AsyncTaskGetAllDataFromServer().execute();
     }
 }

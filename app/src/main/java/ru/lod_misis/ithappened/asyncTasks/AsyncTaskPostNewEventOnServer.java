@@ -37,7 +37,7 @@ public class AsyncTaskPostNewEventOnServer extends AsyncTask<Event, Void, Void> 
             connection.setDoInput(true);
             connection.setRequestProperty("content-type", "application/json");
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
+//            connection.setRequestProperty("Authentication", "gid-token " + Controller.token);
             connection.connect();
 
             OutputStream out = connection.getOutputStream();
@@ -47,12 +47,12 @@ public class AsyncTaskPostNewEventOnServer extends AsyncTask<Event, Void, Void> 
             for (Event event : params) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("Name", event.getName());
-                jsonObject.accumulate("Description", event.getDescription());
-                jsonObject.accumulate("HasMark", event.isMark());
-                jsonObject.accumulate("HasNumber", event.isNumber());
-                jsonObject.accumulate("HasComment", event.isComment());
-                jsonObject.accumulate("LastModified", event.getLastModified());
-                jsonObject.accumulate("IsDeleted", event.isDeleted());
+//                jsonObject.accumulate("Description", event.getDescription());
+//                jsonObject.accumulate("HasMark", event.isMark());
+//                jsonObject.accumulate("HasNumber", event.isNumber());
+//                jsonObject.accumulate("HasComment", event.isComment());
+//                jsonObject.accumulate("LastModified", event.getLastModified());
+//                jsonObject.accumulate("IsDeleted", event.isDeleted());
 
                 jsonArray.put(jsonObject);
             }
@@ -105,7 +105,7 @@ public class AsyncTaskPostNewEventOnServer extends AsyncTask<Event, Void, Void> 
 
     private void updateDB(Event[] events, List<Integer> listId) {
         for (int i = 0; i < listId.size(); i++) {
-            Controller.updateIdServerForEvent(events[i], listId.get(i));
+//            Controller.updateIdServerForEvent(events[i], listId.get(i));
         }
     }
 }
